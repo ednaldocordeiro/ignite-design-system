@@ -70,18 +70,18 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@ignite-ui/eslint-config@*", "@ignite-ui/eslint-config@file:/home/ednaldo/ignite/aula/design-system/packages/eslint-config":
+"@ignite-ui/eslint-config@*", "@ignite-ui/eslint-config@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/eslint-config":
   resolved "file:packages/eslint-config"
 
-"@ignite-ui/react@file:/home/ednaldo/ignite/aula/design-system/packages/react":
+"@ignite-ui/react@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/react":
   version "1.0.0"
   resolved "file:packages/react"
 
-"@ignite-ui/tokens@*", "@ignite-ui/tokens@file:/home/ednaldo/ignite/aula/design-system/packages/tokens":
+"@ignite-ui/tokens@*", "@ignite-ui/tokens@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/tokens":
   version "1.0.0"
   resolved "file:packages/tokens"
 
-"@ignite-ui/ts-config@*", "@ignite-ui/ts-config@file:/home/ednaldo/ignite/aula/design-system/packages/ts-config":
+"@ignite-ui/ts-config@*", "@ignite-ui/ts-config@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/ts-config":
   version "1.0.0"
   resolved "file:packages/ts-config"
 
@@ -173,6 +173,11 @@
     eslint-plugin-react "^7.30.0"
     eslint-plugin-react-hooks "^4.5.0"
     prettier "^3.0.0"
+
+"@stitches/react@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.npmjs.org/@stitches/react/-/react-1.2.8.tgz"
+  integrity sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==
 
 "@types/json-schema@^7.0.9":
   version "7.0.12"
@@ -1944,7 +1949,7 @@ react-is@^16.13.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react@^18.2.0:
+react@^18.2.0, "react@>= 16.3.0":
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
