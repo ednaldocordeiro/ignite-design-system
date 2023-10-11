@@ -1168,10 +1168,20 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@ignit-ui/docs@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/docs":
+  version "0.0.0"
+  resolved "file:packages/docs"
+  dependencies:
+    "@ignite-ui/eslint-config" "*"
+    "@ignite-ui/react" "*"
+    "@ignite-ui/tokens" "*"
+    react "^18.2.0"
+    react-dom "^18.2.0"
+
 "@ignite-ui/eslint-config@*", "@ignite-ui/eslint-config@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/eslint-config":
   resolved "file:packages/eslint-config"
 
-"@ignite-ui/react@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/react":
+"@ignite-ui/react@*", "@ignite-ui/react@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/react":
   version "1.0.0"
   resolved "file:packages/react"
   dependencies:
@@ -3919,13 +3929,6 @@ dir-glob@^3.0.1:
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
-
-"docs@file:/home/ednaldo/ignite/aula/ignite-design-system/packages/docs":
-  version "0.0.0"
-  resolved "file:packages/docs"
-  dependencies:
-    react "^18.2.0"
-    react-dom "^18.2.0"
 
 doctrine@^2.1.0:
   version "2.1.0"
