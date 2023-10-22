@@ -8,6 +8,11 @@ export default {
     src: 'https://github.com/ednaldocordeiro.png',
     alt: 'Ednaldo Cordeiro',
   },
+  argTypes: {
+    src: {
+      control: { type: 'text' },
+    },
+  },
 } as Meta<AvatarProps>
 
 export const Primary: StoryObj<AvatarProps> = {}
