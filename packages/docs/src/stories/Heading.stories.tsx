@@ -2,7 +2,7 @@ import { Heading, HeadingProps } from '@ignite-ui/react'
 import { Meta, StoryObj } from '@storybook/react'
 
 export default {
-  title: 'Typograpohy/Heading',
+  title: 'Typography/Heading',
   component: Heading,
   args: {
     children: 'Title',
