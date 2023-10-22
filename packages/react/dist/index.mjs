@@ -172,6 +172,7 @@ function Avatar2(props) {
     /* @__PURE__ */ jsx(AvatarFallback, { delayMs: 600, children: /* @__PURE__ */ jsx(User, {}) })
   ] });
 }
+Avatar2.displayName = "Avatar";
 
 // src/components/Box.tsx
 var Box = styled("div", {
@@ -180,6 +181,7 @@ var Box = styled("div", {
   background: "$gray800",
   border: "1px solid $gray600"
 });
+Box.displayName = "Box";
 
 // src/components/Button.tsx
 var Button = styled("button", {
@@ -252,6 +254,7 @@ var Button = styled("button", {
     size: "md"
   }
 });
+Button.displayName = "Button";
 
 // src/components/Checkbox/index.tsx
 import { Check } from "phosphor-react";
@@ -312,6 +315,7 @@ import { jsx as jsx2 } from "react/jsx-runtime";
 function Checkbox2(props) {
   return /* @__PURE__ */ jsx2(CheckboxContainer, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ jsx2(CheckboxIndicator, { children: /* @__PURE__ */ jsx2(Check, { weight: "bold" }) }) }));
 }
+Checkbox2.displayName = "Checkbox";
 
 // src/components/Heading.tsx
 var Heading = styled("h2", {
@@ -351,6 +355,7 @@ var Heading = styled("h2", {
     size: "md"
   }
 });
+Heading.displayName = "Heading";
 
 // src/components/Text.tsx
 var Text = styled("p", {
@@ -405,6 +410,7 @@ var Text = styled("p", {
     size: "md"
   }
 });
+Text.displayName = "Text";
 
 // src/components/Multistep/styles.ts
 var MultiStepContainer = styled("div", {});
@@ -447,6 +453,7 @@ function MultiStep(_a) {
     /* @__PURE__ */ jsx3(Steps, { css: { "--steps-size": size }, children: Array.from({ length: size }, (_, i) => i + 1).map((step) => /* @__PURE__ */ jsx3(Step, { active: currentStep >= step }, step)) })
   ] });
 }
+MultiStep.displayName = "MultiStep";
 
 // src/components/TextArea.tsx
 var TextArea = styled("textarea", {
@@ -473,6 +480,7 @@ var TextArea = styled("textarea", {
     color: "$gray400"
   }
 });
+TextArea.displayName = "TextArea";
 
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
@@ -526,6 +534,7 @@ function TextInput(_a) {
     /* @__PURE__ */ jsx4(Input, __spreadValues({}, props))
   ] });
 }
+TextInput.displayName = "TextInput";
 export {
   Avatar2 as Avatar,
   Box,
