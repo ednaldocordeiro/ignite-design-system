@@ -1,52 +1,37 @@
 import { ComponentProps } from 'react'
 import { styled } from '../styles'
 
-export const Text = styled('p', {
+export const Heading = styled('h2', {
   fontFamily: '$default',
-  lineHeight: '$base',
+  lineHeight: '$shorter',
   margin: 0,
   color: '$gray100',
 
   variants: {
     size: {
-      xxs: {
-        fontSize: '$xxs',
-      },
-      xs: {
-        fontSize: '$xs',
-      },
       sm: {
-        fontSize: '$sm',
-      },
-      md: {
-        fontSize: '$md',
-      },
-      lg: {
-        fontSize: '$lg',
-      },
-      xl: {
         fontSize: '$xl',
       },
-      '2xl': {
+      md: {
         fontSize: '$2xl',
       },
-      '4xl': {
+      lg: {
         fontSize: '$4xl',
       },
-      '5xl': {
+      '2xl': {
         fontSize: '$5xl',
       },
-      '6xl': {
+      '3xl': {
         fontSize: '$6xl',
       },
-      '7xl': {
+      '4xl': {
         fontSize: '$7xl',
       },
-      '8xl': {
+      '5xl': {
         fontSize: '$8xl',
       },
-      '9xl': {
-        fontSize: '$9xl',
+      '6xl': {
+        fontSize: '$8xl',
       },
     },
   },
@@ -56,4 +41,4 @@ export const Text = styled('p', {
   },
 })
 
-export type TextProps = ComponentProps<typeof Text>
+export type HeadingProps = ComponentProps<typeof Heading>

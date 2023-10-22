@@ -314,6 +314,45 @@ function Checkbox2(props) {
 }
 
 // src/components/Heading.tsx
+var Heading = styled("h2", {
+  fontFamily: "$default",
+  lineHeight: "$shorter",
+  margin: 0,
+  color: "$gray100",
+  variants: {
+    size: {
+      sm: {
+        fontSize: "$xl"
+      },
+      md: {
+        fontSize: "$2xl"
+      },
+      lg: {
+        fontSize: "$4xl"
+      },
+      "2xl": {
+        fontSize: "$5xl"
+      },
+      "3xl": {
+        fontSize: "$6xl"
+      },
+      "4xl": {
+        fontSize: "$7xl"
+      },
+      "5xl": {
+        fontSize: "$8xl"
+      },
+      "6xl": {
+        fontSize: "$8xl"
+      }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+
+// src/components/Text.tsx
 var Text = styled("p", {
   fontFamily: "$default",
   lineHeight: "$base",
@@ -367,44 +406,47 @@ var Text = styled("p", {
   }
 });
 
-// src/components/Text.tsx
-var Heading = styled("h2", {
-  fontFamily: "$default",
-  lineHeight: "$shorter",
-  margin: 0,
-  color: "$gray100",
-  variants: {
-    size: {
-      sm: {
-        fontSize: "$xl"
-      },
-      md: {
-        fontSize: "$2xl"
-      },
-      lg: {
-        fontSize: "$4xl"
-      },
-      "2xl": {
-        fontSize: "$5xl"
-      },
-      "3xl": {
-        fontSize: "$6xl"
-      },
-      "4xl": {
-        fontSize: "$7xl"
-      },
-      "5xl": {
-        fontSize: "$8xl"
-      },
-      "6xl": {
-        fontSize: "$8xl"
-      }
-    }
-  },
+// src/components/Multistep/styles.ts
+var MultiStepContainer = styled("div", {});
+var Label = styled(Text, {
+  color: "$gray200",
   defaultVariants: {
-    size: "md"
+    size: "xs"
   }
 });
+var Steps = styled("div", {
+  display: "grid",
+  gap: "$2",
+  marginTop: "$1",
+  gridTemplateColumns: "repeat(var(--steps-size), 1fr)"
+});
+var Step = styled("div", {
+  height: "$1",
+  borderRadius: "$xs",
+  backgroundColor: "$gray600",
+  variants: {
+    active: {
+      true: {
+        backgroundColor: "$gray100"
+      }
+    }
+  }
+});
+
+// src/components/Multistep/index.tsx
+import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+function MultiStep(_a) {
+  var _b = _a, { size, currentStep = 1 } = _b, props = __objRest(_b, ["size", "currentStep"]);
+  return /* @__PURE__ */ jsxs2(MultiStepContainer, { children: [
+    /* @__PURE__ */ jsxs2(Label, { children: [
+      "Passo ",
+      currentStep,
+      " de ",
+      size
+    ] }),
+    /* @__PURE__ */ jsx3(Steps, { css: { "--steps-size": size }, children: Array.from({ length: size }, (_, i) => i + 1).map((step) => /* @__PURE__ */ jsx3(Step, { active: currentStep >= step }, step)) })
+  ] });
+}
 
 // src/components/TextArea.tsx
 var TextArea = styled("textarea", {
@@ -475,13 +517,13 @@ var Input = styled("input", {
 });
 
 // src/components/TextInput/index.tsx
-import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
 function TextInput(_a) {
   var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
-  return /* @__PURE__ */ jsxs2(TextInputContainer, { children: [
-    !!prefix && /* @__PURE__ */ jsx3(Prefix, { children: prefix }),
+  return /* @__PURE__ */ jsxs3(TextInputContainer, { children: [
+    !!prefix && /* @__PURE__ */ jsx4(Prefix, { children: prefix }),
     " ",
-    /* @__PURE__ */ jsx3(Input, __spreadValues({}, props))
+    /* @__PURE__ */ jsx4(Input, __spreadValues({}, props))
   ] });
 }
 export {
@@ -490,6 +532,7 @@ export {
   Button,
   Checkbox2 as Checkbox,
   Heading,
+  MultiStep,
   Text,
   TextArea,
   TextInput
