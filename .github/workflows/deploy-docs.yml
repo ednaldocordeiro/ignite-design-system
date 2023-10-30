@@ -21,7 +21,7 @@ jobs:
       
       - run: npm run build
         env:
-          TURBO_TOKEN: CXPJNgakQDpnhN0lMkFKyZV8
+          TURBO_TOKEN: eymKP4zmqoZudgzN87Zns7C7
           TURBO_TEAM: ednaldo-cordeiro
 
       - name: Deploy storybook
