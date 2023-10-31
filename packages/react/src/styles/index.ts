@@ -1,11 +1,11 @@
 import {
-    colors,
-    fontSizes,
-    fontWeights,
-    fonts,
-    lineHeights,
-    radii,
-    space,
+  colors,
+  fontSizes,
+  fontWeights,
+  fonts,
+  lineHeights,
+  radii,
+  space,
 } from '@ed-ignite-ui/tokens'
 import { createStitches, defaultThemeMap } from '@stitches/react'
 
