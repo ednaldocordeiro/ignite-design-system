@@ -51,7 +51,8 @@ var colors = {
   ignite300: "#00B37E",
   ignite500: "#00875F",
   ignite700: "#015F43",
-  ignite900: "#00291D"
+  ignite900: "#00291D",
+  danger: "#ff1d23"
 };
 var fontSizes = {
   xxs: "0.625rem",
@@ -140,8 +141,8 @@ var {
 var AvatarContainer = styled(Avatar.Root, {
   borderRadius: "$full",
   display: "inline-block",
-  width: "$12",
-  height: "$12",
+  width: "$16",
+  height: "$16",
   overflow: "hidden"
 });
 var AvatarImage = styled(Avatar.Image, {
@@ -176,7 +177,7 @@ Avatar2.displayName = "Avatar";
 
 // src/components/Box.tsx
 var Box = styled("div", {
-  padding: "$4",
+  padding: "$6",
   borderRadius: "$md",
   background: "$gray800",
   border: "1px solid $gray600"
@@ -205,6 +206,9 @@ var Button = styled("button", {
   },
   "&:disabled": {
     cursor: "not-allowed"
+  },
+  "&:focus": {
+    boxShadow: "0 0 0 2px $colors$gray100"
   },
   variants: {
     variant: {
@@ -274,7 +278,7 @@ var CheckboxContainer = styled(Checkbox.Root, {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  "&:focus": {
+  '&:focus, &[data-state="checked"]': {
     border: "2px solid $ignite300"
   },
   '&[data-state="checked"]': {
@@ -482,6 +486,9 @@ var TextArea = styled("textarea", {
 });
 TextArea.displayName = "TextArea";
 
+// src/components/TextInput/index.tsx
+import { forwardRef } from "react";
+
 // src/components/TextInput/styles.ts
 var TextInputContainer = styled("div", {
   backgroundColor: "$gray900",
@@ -490,7 +497,17 @@ var TextInputContainer = styled("div", {
   boxSizing: "border-box",
   border: "2px solid $gray900",
   display: "flex",
-  alignItems: "baseline",
+  alignItems: "center",
+  variants: {
+    size: {
+      sm: {
+        padding: "$2 $3"
+      },
+      md: {
+        padding: "$3 $4"
+      }
+    }
+  },
   "&:has(input:focus)": {
     borderColor: "$ignite300"
   },
@@ -519,22 +536,54 @@ var Input = styled("input", {
   "&:disabled": {
     cursor: "not-allowed"
   },
-  "&:placeholder": {
+  "&::placeholder": {
     color: "$gray400"
   }
 });
 
 // src/components/TextInput/index.tsx
 import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
-function TextInput(_a) {
-  var _b = _a, { prefix } = _b, props = __objRest(_b, ["prefix"]);
-  return /* @__PURE__ */ jsxs3(TextInputContainer, { children: [
-    !!prefix && /* @__PURE__ */ jsx4(Prefix, { children: prefix }),
-    " ",
-    /* @__PURE__ */ jsx4(Input, __spreadValues({}, props))
-  ] });
-}
+var TextInput = forwardRef(
+  (_a, ref) => {
+    var _b = _a, { prefix, containerProps } = _b, props = __objRest(_b, ["prefix", "containerProps"]);
+    return /* @__PURE__ */ jsxs3(TextInputContainer, __spreadProps(__spreadValues({}, containerProps), { children: [
+      !!prefix && /* @__PURE__ */ jsx4(Prefix, { children: prefix }),
+      " ",
+      /* @__PURE__ */ jsx4(Input, __spreadValues({ ref }, props))
+    ] }));
+  }
+);
 TextInput.displayName = "TextInput";
+
+// src/components/Tooltip/index.tsx
+import {
+  Portal,
+  Root as Root3,
+  TooltipArrow,
+  TooltipProvider,
+  Trigger
+} from "@radix-ui/react-tooltip";
+
+// src/components/Tooltip/styles.tsx
+import { TooltipContent } from "@radix-ui/react-tooltip";
+var TooltipContentContainer = styled(TooltipContent, {
+  background: "$gray900",
+  borderRadius: "$md",
+  padding: "$3",
+  boxShadow: "4px 16px 24px 0px #00025"
+});
+
+// src/components/Tooltip/index.tsx
+import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+function Tooltip({ description, children }) {
+  return /* @__PURE__ */ jsx5(TooltipProvider, { children: /* @__PURE__ */ jsxs4(Root3, { children: [
+    /* @__PURE__ */ jsx5(Trigger, { asChild: true, children }),
+    /* @__PURE__ */ jsx5(Portal, { children: /* @__PURE__ */ jsxs4(TooltipContentContainer, { side: "top", sideOffset: 2, children: [
+      /* @__PURE__ */ jsx5(Text, { size: "sm", children: description }),
+      /* @__PURE__ */ jsx5(TooltipArrow, {})
+    ] }) })
+  ] }) });
+}
 export {
   Avatar2 as Avatar,
   Box,
@@ -544,5 +593,14 @@ export {
   MultiStep,
   Text,
   TextArea,
-  TextInput
+  TextInput,
+  Tooltip,
+  config,
+  createTheme,
+  css,
+  getCssText,
+  globalCss,
+  keyframes,
+  styled,
+  theme
 };
