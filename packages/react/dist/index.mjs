@@ -555,35 +555,118 @@ var TextInput = forwardRef(
 );
 TextInput.displayName = "TextInput";
 
+// src/components/Toast/index.tsx
+import * as RToast from "@radix-ui/react-toast";
+import { X } from "phosphor-react";
+
+// src/components/Toast/styles.ts
+import * as Toast from "@radix-ui/react-toast";
+var hide = keyframes({
+  "0%": { opacity: 1 },
+  "100%": { opacity: 0 }
+});
+var slideIn2 = keyframes({
+  from: { transform: `translateX(calc(100% + 32px))` },
+  to: { transform: "translateX(0)" }
+});
+var ToastRoot = styled(Toast.Root, {
+  position: "relative",
+  '&[data-state="open"]': {
+    animation: `${slideIn2} 150ms cubic-bezier(0.16, 1, 0.3, 1)`
+  },
+  '&[data-state="closed"]': {
+    animation: `${hide} 100ms ease-in`
+  }
+});
+var Close2 = styled(Toast.Close, {
+  position: "absolute",
+  top: "$4",
+  right: "$4",
+  color: "$gray200",
+  cursor: "pointer"
+});
+var Viewport2 = styled(Toast.Viewport, {
+  position: "fixed",
+  bottom: 0,
+  right: 0,
+  display: "flex",
+  flexDirection: "column",
+  padding: "$8",
+  width: 390,
+  maxWidth: "100vw",
+  margin: 0,
+  zIndex: 9999
+});
+
+// src/components/Toast/index.tsx
+import { Fragment, jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+function Toast2(_a) {
+  var _b = _a, { title, description, children } = _b, props = __objRest(_b, ["title", "description", "children"]);
+  return /* @__PURE__ */ jsxs4(Fragment, { children: [
+    /* @__PURE__ */ jsx5(ToastRoot, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ jsxs4(Box, { css: { padding: "$3 $5" }, children: [
+      /* @__PURE__ */ jsx5(RToast.Title, { asChild: true, children: /* @__PURE__ */ jsx5(Heading, { children: title }) }),
+      /* @__PURE__ */ jsx5(RToast.Description, { asChild: true, children: /* @__PURE__ */ jsx5(Text, { size: "sm", children: description }) }),
+      /* @__PURE__ */ jsx5(Close2, { asChild: true, children: /* @__PURE__ */ jsx5(X, { size: 20 }) })
+    ] }) })),
+    /* @__PURE__ */ jsx5(Viewport2, {})
+  ] });
+}
+var ToastProvider2 = RToast.ToastProvider;
+
 // src/components/Tooltip/index.tsx
-import {
-  Portal,
-  Root as Root3,
-  TooltipArrow,
-  TooltipProvider,
-  Trigger
-} from "@radix-ui/react-tooltip";
+import * as RTooltip from "@radix-ui/react-tooltip";
 
 // src/components/Tooltip/styles.tsx
 import { TooltipContent } from "@radix-ui/react-tooltip";
+var slideToTop = keyframes({
+  "0%": { opacity: 0, transform: "translateY(5px)" },
+  "100%": { opacity: 1, transform: "translateY(0px)" }
+});
+var slideToBottom = keyframes({
+  "0%": { opacity: 0, transform: "translateY(-5px)" },
+  "100%": { opacity: 1, transform: "translateY(0px)" }
+});
+var slideToRight = keyframes({
+  "0%": { opacity: 0, transform: "translateX(5px)" },
+  "100%": { opacity: 1, transform: "translateX(0px)" }
+});
+var slideToLeft = keyframes({
+  "0%": { opacity: 0, transform: "translateX(-5px)" },
+  "100%": { opacity: 1, transform: "translateX(0px)" }
+});
 var TooltipContentContainer = styled(TooltipContent, {
   background: "$gray900",
   borderRadius: "$md",
   padding: "$3",
-  boxShadow: "4px 16px 24px 0px #00025"
+  boxShadow: "4px 16px 24px 0px #00025",
+  '&[data-state="delayed-open"]': {
+    '&[data-side="top"]': {
+      animation: `${slideToTop} 150ms ease-in`
+    },
+    '&[data-side="bottom"]': {
+      animation: `${slideToBottom} 150ms ease-out`
+    },
+    '&[data-side="right"]': {
+      animation: `${slideToRight} 150ms ease-out`
+    },
+    '&[data-side="left"]': {
+      animation: `${slideToLeft} 150ms ease-out`
+    }
+  }
 });
 
 // src/components/Tooltip/index.tsx
-import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+import { Fragment as Fragment2, jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
 function Tooltip({ description, children }) {
-  return /* @__PURE__ */ jsx5(TooltipProvider, { children: /* @__PURE__ */ jsxs4(Root3, { children: [
-    /* @__PURE__ */ jsx5(Trigger, { asChild: true, children }),
-    /* @__PURE__ */ jsx5(Portal, { children: /* @__PURE__ */ jsxs4(TooltipContentContainer, { side: "top", sideOffset: 2, children: [
-      /* @__PURE__ */ jsx5(Text, { size: "sm", children: description }),
-      /* @__PURE__ */ jsx5(TooltipArrow, {})
+  return /* @__PURE__ */ jsx6(Fragment2, { children: /* @__PURE__ */ jsxs5(RTooltip.Root, { children: [
+    /* @__PURE__ */ jsx6(RTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ jsx6(RTooltip.Portal, { children: /* @__PURE__ */ jsxs5(TooltipContentContainer, { sideOffset: 2, children: [
+      /* @__PURE__ */ jsx6(Text, { size: "sm", children: description }),
+      /* @__PURE__ */ jsx6(RTooltip.TooltipArrow, {})
     ] }) })
   ] }) });
 }
+var TooltipProvider = RTooltip.Provider;
 export {
   Avatar2 as Avatar,
   Box,
@@ -594,7 +677,10 @@ export {
   Text,
   TextArea,
   TextInput,
+  Toast2 as Toast,
+  ToastProvider2 as ToastProvider,
   Tooltip,
+  TooltipProvider,
   config,
   createTheme,
   css,

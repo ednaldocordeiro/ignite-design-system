@@ -1,31 +1,25 @@
-import {
-  Portal,
-  Root,
-  TooltipArrow,
-  TooltipProvider,
-  Trigger,
-} from '@radix-ui/react-tooltip'
-import { ComponentProps } from 'react'
+import * as RTooltip from '@radix-ui/react-tooltip'
 import { Text } from '../Text'
 import { TooltipContentContainer } from './styles'
 
-export interface TooltipProps
-  extends ComponentProps<typeof TooltipContentContainer> {
+export interface TooltipProps extends RTooltip.TooltipContentProps {
   description: string
 }
 
 export function Tooltip({ description, children }: TooltipProps) {
   return (
-    <TooltipProvider>
-      <Root>
-        <Trigger asChild>{children}</Trigger>
-        <Portal>
-          <TooltipContentContainer side="top" sideOffset={2}>
+    <>
+      <RTooltip.Root>
+        <RTooltip.Trigger asChild>{children}</RTooltip.Trigger>
+        <RTooltip.Portal>
+          <TooltipContentContainer sideOffset={2}>
             <Text size="sm">{description}</Text>
-            <TooltipArrow />
+            <RTooltip.TooltipArrow />
           </TooltipContentContainer>
-        </Portal>
-      </Root>
-    </TooltipProvider>
+        </RTooltip.Portal>
+      </RTooltip.Root>
+    </>
   )
 }
+
+export const TooltipProvider = RTooltip.Provider

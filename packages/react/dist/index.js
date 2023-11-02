@@ -68,7 +68,10 @@ __export(src_exports, {
   Text: () => Text,
   TextArea: () => TextArea,
   TextInput: () => TextInput,
+  Toast: () => Toast2,
+  ToastProvider: () => ToastProvider2,
   Tooltip: () => Tooltip,
+  TooltipProvider: () => TooltipProvider,
   config: () => config,
   createTheme: () => createTheme,
   css: () => css,
@@ -605,29 +608,118 @@ var TextInput = (0, import_react2.forwardRef)(
 );
 TextInput.displayName = "TextInput";
 
+// src/components/Toast/index.tsx
+var RToast = __toESM(require("@radix-ui/react-toast"));
+var import_phosphor_react3 = require("phosphor-react");
+
+// src/components/Toast/styles.ts
+var Toast = __toESM(require("@radix-ui/react-toast"));
+var hide = keyframes({
+  "0%": { opacity: 1 },
+  "100%": { opacity: 0 }
+});
+var slideIn2 = keyframes({
+  from: { transform: `translateX(calc(100% + 32px))` },
+  to: { transform: "translateX(0)" }
+});
+var ToastRoot = styled(Toast.Root, {
+  position: "relative",
+  '&[data-state="open"]': {
+    animation: `${slideIn2} 150ms cubic-bezier(0.16, 1, 0.3, 1)`
+  },
+  '&[data-state="closed"]': {
+    animation: `${hide} 100ms ease-in`
+  }
+});
+var Close2 = styled(Toast.Close, {
+  position: "absolute",
+  top: "$4",
+  right: "$4",
+  color: "$gray200",
+  cursor: "pointer"
+});
+var Viewport2 = styled(Toast.Viewport, {
+  position: "fixed",
+  bottom: 0,
+  right: 0,
+  display: "flex",
+  flexDirection: "column",
+  padding: "$8",
+  width: 390,
+  maxWidth: "100vw",
+  margin: 0,
+  zIndex: 9999
+});
+
+// src/components/Toast/index.tsx
+var import_jsx_runtime5 = require("react/jsx-runtime");
+function Toast2(_a) {
+  var _b = _a, { title, description, children } = _b, props = __objRest(_b, ["title", "description", "children"]);
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ToastRoot, __spreadProps(__spreadValues({}, props), { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Box, { css: { padding: "$3 $5" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(RToast.Title, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Heading, { children: title }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(RToast.Description, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Text, { size: "sm", children: description }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Close2, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_phosphor_react3.X, { size: 20 }) })
+    ] }) })),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Viewport2, {})
+  ] });
+}
+var ToastProvider2 = RToast.ToastProvider;
+
 // src/components/Tooltip/index.tsx
-var import_react_tooltip2 = require("@radix-ui/react-tooltip");
+var RTooltip = __toESM(require("@radix-ui/react-tooltip"));
 
 // src/components/Tooltip/styles.tsx
 var import_react_tooltip = require("@radix-ui/react-tooltip");
+var slideToTop = keyframes({
+  "0%": { opacity: 0, transform: "translateY(5px)" },
+  "100%": { opacity: 1, transform: "translateY(0px)" }
+});
+var slideToBottom = keyframes({
+  "0%": { opacity: 0, transform: "translateY(-5px)" },
+  "100%": { opacity: 1, transform: "translateY(0px)" }
+});
+var slideToRight = keyframes({
+  "0%": { opacity: 0, transform: "translateX(5px)" },
+  "100%": { opacity: 1, transform: "translateX(0px)" }
+});
+var slideToLeft = keyframes({
+  "0%": { opacity: 0, transform: "translateX(-5px)" },
+  "100%": { opacity: 1, transform: "translateX(0px)" }
+});
 var TooltipContentContainer = styled(import_react_tooltip.TooltipContent, {
   background: "$gray900",
   borderRadius: "$md",
   padding: "$3",
-  boxShadow: "4px 16px 24px 0px #00025"
+  boxShadow: "4px 16px 24px 0px #00025",
+  '&[data-state="delayed-open"]': {
+    '&[data-side="top"]': {
+      animation: `${slideToTop} 150ms ease-in`
+    },
+    '&[data-side="bottom"]': {
+      animation: `${slideToBottom} 150ms ease-out`
+    },
+    '&[data-side="right"]': {
+      animation: `${slideToRight} 150ms ease-out`
+    },
+    '&[data-side="left"]': {
+      animation: `${slideToLeft} 150ms ease-out`
+    }
+  }
 });
 
 // src/components/Tooltip/index.tsx
-var import_jsx_runtime5 = require("react/jsx-runtime");
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function Tooltip({ description, children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_tooltip2.TooltipProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_react_tooltip2.Root, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_tooltip2.Trigger, { asChild: true, children }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_tooltip2.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(TooltipContentContainer, { side: "top", sideOffset: 2, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Text, { size: "sm", children: description }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_react_tooltip2.TooltipArrow, {})
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_jsx_runtime6.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(RTooltip.Root, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RTooltip.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(TooltipContentContainer, { sideOffset: 2, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Text, { size: "sm", children: description }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RTooltip.TooltipArrow, {})
     ] }) })
   ] }) });
 }
+var TooltipProvider = RTooltip.Provider;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
@@ -639,7 +731,10 @@ function Tooltip({ description, children }) {
   Text,
   TextArea,
   TextInput,
+  Toast,
+  ToastProvider,
   Tooltip,
+  TooltipProvider,
   config,
   createTheme,
   css,

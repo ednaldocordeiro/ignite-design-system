@@ -1,5 +1,10 @@
-import { Button, Tooltip, TooltipProps } from '@ed-ignite-ui/react'
-import { Meta, StoryObj } from '@storybook/react'
+import {
+  Button,
+  Tooltip,
+  TooltipProps,
+  TooltipProvider,
+} from '@ed-ignite-ui/react'
+import { Meta } from '@storybook/react'
 
 export default {
   title: 'Overlay/Tooltip',
@@ -10,4 +15,10 @@ export default {
   },
 } as Meta<TooltipProps>
 
-export const Primary: StoryObj<TooltipProps> = {}
+export const Primary = (args: TooltipProps) => {
+  return (
+    <TooltipProvider>
+      <Tooltip {...args} />
+    </TooltipProvider>
+  )
+}
