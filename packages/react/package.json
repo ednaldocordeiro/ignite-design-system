@@ -1,6 +1,6 @@
 {
   "name": "@ed-ignite-ui/react",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

@@ -1,5 +1,11 @@
 # @ed-ignite-ui/react
 
+## 3.1.0
+
+### Minor Changes
+
+- New components
+
 ## 3.0.1
 
 ### Patch Changes
